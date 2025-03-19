@@ -12,7 +12,6 @@ import lombok.Setter;
 public class TransactionDTO {
 
     private Long id;
-
     private String name;
     private Integer amount;
 }

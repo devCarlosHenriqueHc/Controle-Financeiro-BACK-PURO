@@ -5,16 +5,21 @@ import com.ControleFinanceiroBACK.entities.TransactionEntity;
 import com.ControleFinanceiroBACK.model.TransactionModel;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Component
 public class TransactionMapper {
 
-    public TransactionEntity toEntity(TransactionModel transactionModel) {
+    // Converte de TransactionDTO para TransactionEntity
+    public com.ControleFinanceiroBACK.entities.TransactionEntity toEntity(TransactionModel transactionModel) {
         TransactionEntity transactionEntity = new TransactionEntity();
         transactionEntity.setName(transactionModel.getName());
         transactionEntity.setAmount(transactionModel.getAmount());
         return transactionEntity;
     }
 
+    // Converte de TransactionEntity para TransactionDTO
     public TransactionDTO toDTO(TransactionEntity transactionEntity) {
         TransactionDTO transactionDTO = new TransactionDTO();
         transactionDTO.setId(transactionEntity.getId());
@@ -22,6 +27,4 @@ public class TransactionMapper {
         transactionDTO.setAmount(transactionEntity.getAmount());
         return transactionDTO;
     }
-
-
 }
