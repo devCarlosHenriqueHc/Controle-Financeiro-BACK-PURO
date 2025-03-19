@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/v1/transactions")
@@ -19,12 +20,12 @@ public class TransactionController {
     private final TransactionService transactionService;
     private final TransactionMapper transactionMapper;
 
-//    @GetMapping
-//    public ResponseEntity<List<TransactionDTO>> getAllTransactions() {
-//        List<com.ControleFinanceiroBACK.entities.TransactionEntity> transactions = transactionService.getAllTransactions();
-//        List<TransactionDTO> transactionDTOs = transactionMapper.toListDTO(transactions);
-//        return ResponseEntity.ok(transactionDTOs);
-//    }
+    @GetMapping
+    public ResponseEntity<List<TransactionDTO>> getAllTransactions() {
+        // Aqui, a transformação da lista para DTOs será feita diretamente na mapper
+        List<TransactionDTO> transactionDTOs = transactionMapper.toDTOList(transactionService.getAllTransactions());
+        return ResponseEntity.ok(transactionDTOs);
+    }
 
     @PostMapping
     public ResponseEntity<TransactionDTO> addTransaction(@RequestBody TransactionModel transactionModel) {

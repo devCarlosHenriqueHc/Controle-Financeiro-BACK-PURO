@@ -27,4 +27,11 @@ public class TransactionMapper {
         transactionDTO.setAmount(transactionEntity.getAmount());
         return transactionDTO;
     }
+
+    // Converte uma lista de TransactionEntity para uma lista de TransactionDTO
+    public List<TransactionDTO> toDTOList(List<TransactionEntity> transactions) {
+        return transactions.stream()
+                .map(this::toDTO)
+                .collect(Collectors.toList());
+    }
 }

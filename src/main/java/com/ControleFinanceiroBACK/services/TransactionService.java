@@ -24,7 +24,10 @@ public class TransactionService {
         return transactionRepository.save(transactionEntity);
     }
 
-//    public List<TransactionDTO> getAllTransactions() {
-//        return transactionRepository.findAll();
-//    }
+    public List<TransactionEntity> getAllTransactions() {
+        // Retorna todas as transações do banco de dados
+        return transactionRepository.findAll();
+    }
+
+
 }
